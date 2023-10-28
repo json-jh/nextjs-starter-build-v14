@@ -25,3 +25,16 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+:root {
+  --header-height: 4rem;
+}
+
+.theme-provider {
+  @apply transition-[background-color] duration-200;
+  @apply min-h-screen;
+
+  &.theme-dark {
+    @apply bg-neutral-800 text-white;
+  }
+}
