@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+::-webkit-scrollbar {
+  width: 0.4em;
+  height: 0.4em;
+  @apply bg-transparent
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 dark:bg-gray-600 rounded
+}
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800 rounded
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -16,25 +28,15 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 :root {
-  --header-height: 4rem;
+  --header-height: 84px;
 }
 
 .theme-provider {
   @apply transition-[background-color] duration-200;
   @apply min-h-screen;
 
-  &.theme-dark {
+  &.dark {
     @apply bg-neutral-800 text-white;
   }
 }

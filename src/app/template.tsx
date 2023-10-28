@@ -1,16 +1,15 @@
 'use client'
 
-import Header from '@/components/layout/Header'
+import Main from '@/components/layout/Main'
+import UiProvider from '@/context/UiProvider'
 import { ReactNode } from 'react'
 
 export default function RootTemplate({children }: { children: ReactNode }) {
   return (
-    <section className='block'>
-      <Header />
-      <div>
+    <UiProvider>
+      <Main>
         { children }
-      </div>
-      <div>footer</div>
-    </section>
+      </Main>
+    </UiProvider>
   )
 }
