@@ -48,7 +48,12 @@ export const defaultValue: {
 
 export const UiContext = createContext(defaultValue)
 
-export default function UiProvider({ children, theme:initTheme }: { children: ReactNode, theme?: Theme}) {
+interface Props {
+  children: ReactNode
+  theme?: Theme
+}
+
+export default function UiProvider({ children, theme:initTheme }: Props) {
   const [themes, setThemes] = useState<Theme[]>(['system', 'light', 'dark']);
   const [theme, setTheme] = useState<Theme>(initTheme || 'system');
   const [container, setContainer] = useState<Container>(defaultValue.container)
