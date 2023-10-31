@@ -18,13 +18,9 @@ export interface Aside {
 export const defaultValue: {
   container: Container
   aside: Aside
-  setContainer: (container: Container) => void
-  setAside: (aside: Aside) => void
   theme: Theme
   themes: Theme[]
-  setTheme: (theme:Theme) => void
   changeTheme: (theme:Theme) => void
-  setThemes: (themes:Theme[]) => void
   changeContainer: (container:Container) => void
   changeAside: (aside:Aside) => void
 } = {
@@ -35,13 +31,9 @@ export const defaultValue: {
     align: 'left',
     isShow: false
   },
-  setContainer: ({}) => {},
-  setAside: ({}) => {},
   theme: 'system',
   themes: [],
-  setTheme: () => {},
   changeTheme: () => {},
-  setThemes: () => {},
   changeContainer: () => {},
   changeAside: () => {}
 }
@@ -94,12 +86,8 @@ export default function UiProvider({ children, theme:initTheme }: Props) {
     <UiContext.Provider value={{
       container,
       aside,
-      setContainer,
-      setAside,
       theme,
       themes,
-      setTheme,
-      setThemes,
       changeTheme,
       changeContainer,
       changeAside

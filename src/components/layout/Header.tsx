@@ -5,10 +5,11 @@ import React from 'react'
 import { Icon } from "@iconify/react";
 import ThemeSwitcher from '../config/ThemeSwitcher';
 import ConfigUi from '../config/ConfigUi';
+import Session from '../config/Session';
 
 export default function Header() {
   return (
-    <header className='h-[var(--header-height)] sticky top-0 w-full p-4'>
+    <header className='h-[var(--header-height)] sticky top-0 w-full p-2 z-50'>
       <div className={[
         'flex items-center backdrop-blur h-full',
         'rounded-lg border-dotted border-2 h-full p-2'
@@ -22,8 +23,9 @@ export default function Header() {
         </div>
         <div className='flex-auto'></div>
         <div className='flex-auto flex flex-nowrap justify-end items-center gap-2'>
-          <ConfigUi />
           <ThemeSwitcher />
+          <ConfigUi />
+          <Session />
         </div>
       </div>
     </header>

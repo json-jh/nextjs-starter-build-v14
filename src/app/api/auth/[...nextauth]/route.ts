@@ -1,6 +1,7 @@
-import NextAuth, { NextAuthOptions } from "next-auth"
-import GithubProvider from "next-auth/providers/github"
-import NaverProvider from "next-auth/providers/naver"
+import NextAuth, { NextAuthOptions } from "next-auth";
+import GithubProvider from "next-auth/providers/github";
+import KakaoProvider from "next-auth/providers/kakao";
+import NaverProvider from "next-auth/providers/naver";
 
 const {
   NEXTAUTH_SECRET = '',
@@ -9,7 +10,9 @@ const {
   EMAIL_SERVER = '',
   EMAIL_FROM = '',
   NAVER_CLIENT_ID = '',
-  NAVER_CLIENT_SECRET = ''
+  NAVER_CLIENT_SECRET = '',
+  KAKAO_CLIENT_ID = '',
+  KAKAO_CLIENT_SECRET = ''
 } = process.env
 
 export const authOptions = {
@@ -22,6 +25,10 @@ export const authOptions = {
     GithubProvider({
       clientId: GITHUB_ID,
       clientSecret: GITHUB_SECRET
+    }),
+    KakaoProvider({
+      clientId: KAKAO_CLIENT_ID,
+      clientSecret: KAKAO_CLIENT_SECRET
     })
     /**
      * https://next-auth.js.org/configuration/providers/email
@@ -31,7 +38,27 @@ export const authOptions = {
     //   from: EMAIL_FROM
     //   // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
     // })
-  ]
+  ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true
+    },
+    async jwt({ token, user, account, profile, isNewUser }) {
+      return {
+        provider: account?.provider,
+        ...token
+      }
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl
+    },
+    session({ session, user, token }) {
+      return {
+        provider: token.provider,
+        ...session
+      }
+    }
+  }
   // pages: {
   //   signIn: '/signin',
   //   signOut: '/signout',
@@ -43,4 +70,5 @@ export const authOptions = {
 
 const handler = NextAuth(authOptions)
 
-export { handler as GET, handler as POST }
+export { handler as GET, handler as POST };
+

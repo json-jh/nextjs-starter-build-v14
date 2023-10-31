@@ -84,7 +84,7 @@ export default function ConfigUi() {
 
   return (
     <>
-      <Menu as="div" className="relative inline-block text-left select-none">
+      <Menu as="div" className="hidden lg:inline-block relative text-left select-none">
         <Menu.Button className='flex items-center'>
           <Icon icon={'mdi-code-block-brackets'} className='text-2xl' />
         </Menu.Button>
@@ -97,11 +97,11 @@ export default function ConfigUi() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 mt-2 origin-top-right rounded-md shadow divide-y dark:shadow-neutral-700 ring-1 ring-black ring-opacity-5 focus:outline-none bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur p-1">
+          <Menu.Items className="absolute right-0 mt-2 origin-top-right rounded-md shadow lg:divide-y dark:shadow-neutral-700 ring-1 ring-black ring-opacity-5 focus:outline-none bg-neutral-100/80 dark:bg-neutral-800/80 backdrop-blur p-1">
             {group.map((menus, gIndex) => (
               <div key={gIndex} className="p-1 flex flex-col gap-1">
                 {menus.map((menu, mIndex) => (
-                  <Menu.Item key={mIndex} as={'div'}>
+                  <Menu.Item key={mIndex} as={'div'} className={[menu.title === 'container' && 'hidden lg:block'].filter(c => !!c).join(' ')}>
                     <button
                       className={[
                         'group flex items-center text-sm w-full rounded-md gap-2',

@@ -1,0 +1,1 @@
+declare type AuthProviders = 'kakao' | 'google' | 'naver'

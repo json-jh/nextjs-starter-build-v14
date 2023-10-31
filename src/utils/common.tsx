@@ -1,0 +1,1 @@
+export const classNames = (classes: Array<string | boolean>):string => classes.filter(c => !!c).join(' ')
