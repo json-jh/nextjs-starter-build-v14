@@ -3,6 +3,8 @@
 
 import AuthProviderIcon from '@/components/common/AuthProviderIcon'
 import ImageWithFallback from '@/components/common/ImageWithFallback'
+import PrivacyTermsOfUse from '@/components/terms/PrivacyTermsOfUse'
+import PushNotificationTerms from '@/components/terms/PushNotificationTerms'
 import { AuthContext } from '@/context/AuthProvider'
 import { useContext } from 'react'
 
@@ -34,11 +36,9 @@ export default function page() {
           {auth.session.user.email}
         </div>
       </div>
-      <div className='flex justify-center p-2 border-2 rounded-lg border-dotted'>
-        개인정보이용 동의
-      </div>
-      <div className='flex justify-center p-2 border-2 rounded-lg border-dotted'>
-        푸쉬알림 동의
+      <div className='flex flex-col gap-2 p-2 border-2 rounded-lg border-dotted'>
+        <PrivacyTermsOfUse />
+        <PushNotificationTerms />
       </div>
     </div>
   )
